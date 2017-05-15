@@ -63,7 +63,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Model\ForecastReader.cs" />
+    <Compile Include="Model\DarkSkyForecastReader.cs" />
     <Compile Include="LocationViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -72,6 +72,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="Model\DataPoint.cs" />
+    <Compile Include="Model\IForecastReader.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\WeatherData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

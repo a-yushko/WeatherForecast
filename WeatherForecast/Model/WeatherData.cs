@@ -23,9 +23,9 @@ namespace WeatherForecast.Model
 
     public class WeatherData
     {
-        public int Temperature { get; set; }
-        public int Pressure { get; set; }
-        public string Summary { get; set; }
-        public WeatherIcon Icon { get; set; }
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public string Timezone { get; set; }
+        public DataPoint Current { get; set; }
     }
 }
