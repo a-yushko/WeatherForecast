@@ -1,52 +1,84 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherForecast.Model;
 
 namespace WeatherForecast
 {
-    public class MainWindowViewModel
+    public class MainWindowViewModel : INotifyPropertyChanged
     {
+        private IForecastReader _reader;
+        private string _operation;
+
         public MainWindowViewModel()
         {
-            Locations = new ObservableCollection<LocationViewModel>();
+            Locations = new ObservableCollection<WeatherData>();
+            Operation = "Ready";
             AddDummyData();
             InitReader();
         }
 
-        private async Task InitReader()
+        public string Operation
         {
-            var lines = File.ReadAllText("key.txt");
-            var reader = new DarkSkyForecastReader(lines.Trim());
-            var data = await reader.ReadDataAsync(Locations.First().Location);
+            get { return _operation; }
+            set
+            {
+                _operation = value; 
+                OnPropertyChanged(nameof(Operation));
+            }
         }
 
-        public ObservableCollection<LocationViewModel> Locations { get; set; }
+        private void InitReader()
+        {
+            var key = File.ReadAllText("key.txt");
+            _reader = new DarkSkyForecastReader(key.Trim());
+        }
+
+        public async void Refresh()
+        {
+            Operation = "Loading...";
+            try
+            {
+                var data = await _reader.ReadDataAsync(GetDefaultLocation());
+                Locations.Clear();
+                Locations.Add(data);
+                Operation = "Ready";
+            }
+            catch (InvalidOperationException e)
+            {
+                Operation = e.Message;
+            }
+        }
+
+        public ObservableCollection<WeatherData> Locations { get; set; }
 
         private void AddDummyData()
         {
-            var forecast = new WeatherData()
-            {
-                Current = new DataPoint()
-                {
-                    Icon = WeatherIcon.ClearDay,
-                    Temperature = 17,
-                    Pressure = 200,
-                    Summary = "Clear"
-                }
-            };
-            var location = new Location()
+            var location = GetDefaultLocation();
+            Locations.Add(new WeatherData() {Timezone = location.Timezone});
+        }
+
+        Location GetDefaultLocation()
+        {
+            return new Location()
             {
                 Latitude = "50.43",
                 Longitude = "30.52",
                 Timezone = "Europe/Kiev"
             };
-            var item = new LocationViewModel(location, forecast);
-            Locations.Add(item);
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

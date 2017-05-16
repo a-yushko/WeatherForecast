@@ -32,10 +32,10 @@ namespace WeatherForecast.Model
             var response =  await _httpClient.GetAsync(request);
             if (response.IsSuccessStatusCode)
             {
-                string jsonData;
-                jsonData = await response.Content.ReadAsStringAsync();
-                //TODO: Parse json response
-
+                #if DEBUG
+                string json = await response.Content.ReadAsStringAsync();
+                #endif
+                data = await response.Content.ReadAsAsync<WeatherData>();
             }
 
             return data;

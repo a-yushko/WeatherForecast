@@ -5,19 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherForecast"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <DockPanel>
-        <Button DockPanel.Dock="Bottom">Refresh</Button>
-        <ListBox ItemsSource="{Binding Locations}">
+        Title="Weather Forecast"
+        Height="350"
+        Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListBox ItemsSource="{Binding Locations}"
+                 Grid.Row="0"
+                 Margin="11 11 11 0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="{Binding Location.Timezone}" />
-                        <TextBlock Text="{Binding Forecast.Temperature}" />
-                        <TextBlock Text="{Binding Forecast.Summary}" />
+                        <TextBlock Text="{Binding Timezone}" />
+                        <TextBlock Text="{Binding Currently.Temperature}" />
+                        <TextBlock Text="{Binding Currently.Summary}" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-    </DockPanel>
+        <StackPanel Grid.Row="1"
+                    Orientation="Horizontal">
+            <Button Content="Add location"
+                    Margin="11"/>
+            <Button Content="Refresh"
+                    Click="RefreshClick"
+                    Margin="11"/>
+            <TextBlock Text="{Binding Operation}"
+                       TextTrimming="CharacterEllipsis"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Center"
+                       Margin="11" />
+        </StackPanel>
+    </Grid>
 </Window>

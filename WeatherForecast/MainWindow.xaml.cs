@@ -25,5 +25,15 @@ namespace WeatherForecast
             InitializeComponent();
             DataContext = new MainWindowViewModel();
         }
+
+        protected MainWindowViewModel ViewModel
+        {
+            get { return DataContext as MainWindowViewModel; }
+        }
+
+        private void RefreshClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.Refresh();
+        }
     }
 }

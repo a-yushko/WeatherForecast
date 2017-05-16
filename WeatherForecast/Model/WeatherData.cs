@@ -26,6 +26,6 @@ namespace WeatherForecast.Model
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Timezone { get; set; }
-        public DataPoint Current { get; set; }
+        public DataPoint Currently { get; set; }
     }
 }
