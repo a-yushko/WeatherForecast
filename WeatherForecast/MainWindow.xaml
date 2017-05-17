@@ -8,32 +8,59 @@
         Title="Weather Forecast"
         Height="350"
         Width="525">
+    <Window.Resources>
+        <Color x:Key="AccentColor">#00C0E0</Color>
+        <Color x:Key="TextColor">#282828</Color>
+        <Color x:Key="BorderColor">#BABABA</Color>
+        <Color x:Key="BackgroundColor">#FFFFFF</Color>
+        <SolidColorBrush x:Key="AccentBrush"
+                         Color="{StaticResource AccentColor}" />
+        <SolidColorBrush x:Key="TextBrush"
+                         Color="{StaticResource TextColor}" />
+        <SolidColorBrush x:Key="BorderBrush"
+                         Color="{StaticResource BorderColor}" />
+        <SolidColorBrush x:Key="BackgroundBrush"
+                         Color="{StaticResource BackgroundColor}" />
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-
+        <TextBlock Text="Local Weather"
+                   Grid.Row="0"
+                   Margin="25 0"
+                   FontSize="18"
+                   FontWeight="SemiBold"
+                   Foreground="{StaticResource TextBrush}" />
         <ListBox ItemsSource="{Binding Locations}"
-                 Grid.Row="0"
-                 Margin="11 11 11 0">
+                 Grid.Row="1"
+                 Margin="25 11 25 0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel>
-                        <TextBlock Text="{Binding Timezone}" />
-                        <TextBlock Text="{Binding Currently.Temperature}" />
-                        <TextBlock Text="{Binding Currently.Summary}" />
+                    <StackPanel Margin="11">
+                        <TextBlock Text="{Binding City}"
+                                   Foreground="{StaticResource AccentBrush}"
+                                   FontWeight="Bold"/>
+                        <TextBlock Text="{Binding Temperature}"
+                                   FontSize="24" />
+                        <TextBlock Text="{Binding Current.ApparentTemperature, StringFormat=Feels like {0}}"
+                                   FontSize="14"
+                                   Foreground="{StaticResource BorderBrush}"/>
+                        <TextBlock Text="{Binding Current.Summary}"
+                                   FontSize="16" />
                     </StackPanel>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Row="1"
+        <StackPanel Grid.Row="2"
                     Orientation="Horizontal">
             <Button Content="Add location"
-                    Margin="11"/>
+                    Margin="25 11" />
             <Button Content="Refresh"
                     Click="RefreshClick"
-                    Margin="11"/>
+                    Margin="0 11" />
             <TextBlock Text="{Binding Operation}"
                        TextTrimming="CharacterEllipsis"
                        HorizontalAlignment="Left"

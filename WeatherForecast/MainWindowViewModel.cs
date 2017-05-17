@@ -18,7 +18,7 @@ namespace WeatherForecast
 
         public MainWindowViewModel()
         {
-            Locations = new ObservableCollection<WeatherData>();
+            Locations = new ObservableCollection<LocationViewModel>();
             Operation = "Ready";
             AddDummyData();
             InitReader();
@@ -29,7 +29,7 @@ namespace WeatherForecast
             get { return _operation; }
             set
             {
-                _operation = value; 
+                _operation = value;
                 OnPropertyChanged(nameof(Operation));
             }
         }
@@ -47,7 +47,7 @@ namespace WeatherForecast
             {
                 var data = await _reader.ReadDataAsync(GetDefaultLocation());
                 Locations.Clear();
-                Locations.Add(data);
+                Locations.Add(new LocationViewModel(data));
                 Operation = "Ready";
             }
             catch (InvalidOperationException e)
@@ -56,12 +56,21 @@ namespace WeatherForecast
             }
         }
 
-        public ObservableCollection<WeatherData> Locations { get; set; }
+        public ObservableCollection<LocationViewModel> Locations { get; set; }
 
         private void AddDummyData()
         {
             var location = GetDefaultLocation();
-            Locations.Add(new WeatherData() {Timezone = location.Timezone});
+            Locations.Add(new LocationViewModel(new WeatherData()
+            {
+                Timezone = location.Timezone,
+                Currently = new DataPoint()
+                {
+                    Temperature = 19.5F,
+                    ApparentTemperature = 17,
+                    Summary = "Clear"
+                }
+            }));
         }
 
         Location GetDefaultLocation()

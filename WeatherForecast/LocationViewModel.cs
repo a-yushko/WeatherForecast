@@ -9,12 +9,17 @@ namespace WeatherForecast
 {
     public class LocationViewModel
     {
-        public LocationViewModel(Location location, WeatherData forecast)
+        private WeatherData _data;
+
+        public LocationViewModel(WeatherData data)
         {
-            Location = location;
-            Forecast = forecast;
+            _data = data;
         }
-        public Location Location { get; set; }
-        public WeatherData Forecast { get; set; }
+
+        public string City => _data.Timezone.ToUpper();
+
+        public int Temperature => (int)_data.Currently.Temperature;
+
+        public DataPoint Current => _data.Currently;
     }
 }
