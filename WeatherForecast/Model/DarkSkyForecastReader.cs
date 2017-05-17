@@ -21,13 +21,13 @@ namespace WeatherForecast.Model
         public DarkSkyForecastReader(string key)
         {
             _key = key;
+            _httpClient.BaseAddress = new Uri(BaseUrl + _key + "/");
         }
         public async Task<WeatherData> ReadDataAsync(Location location)
         {
             WeatherData data = null;
             // https://api.darksky.net/forecast/[key]/[latitude],[longitude]
             // ex: https://api.darksky.net/forecast/975b80d37eef043a5b2bf324dcc673ba/37.8267,-122.4233
-            _httpClient.BaseAddress = new Uri(BaseUrl + _key + "/");
             var request = GetRequestString(location);
             var response =  await _httpClient.GetAsync(request);
             if (response.IsSuccessStatusCode)
