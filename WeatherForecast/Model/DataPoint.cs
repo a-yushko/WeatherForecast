@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WeatherForecast.Model
 {
@@ -10,6 +8,7 @@ namespace WeatherForecast.Model
     /// Contains various properties, each representing the average of a particular weather phenomenon 
     /// occurring during a period of time
     /// </summary>
+    [DebuggerDisplay("{Temperature}, {Summary}")]
     public class DataPoint
     {
         public int Time { get; set; }

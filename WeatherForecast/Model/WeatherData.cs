@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WeatherForecast.Model
 {
@@ -21,6 +19,7 @@ namespace WeatherForecast.Model
         PartlyCloudyNight
     }
 
+    [DebuggerDisplay("{Timezone}, {Currently}")]
     public class WeatherData
     {
         public string Latitude { get; set; }

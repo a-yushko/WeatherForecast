@@ -19,9 +19,9 @@ namespace WeatherForecast
         public MainWindowViewModel()
         {
             Locations = new ObservableCollection<LocationViewModel>();
-            Operation = "Ready";
-            AddDummyData();
+            AddDefaultData();
             InitReader();
+            Refresh();
         }
 
         public string Operation
@@ -45,9 +45,13 @@ namespace WeatherForecast
             Operation = "Loading...";
             try
             {
-                var data = await _reader.ReadDataAsync(GetDefaultLocation());
+                var locations = Locations.Select(it => it.Location).ToList();
                 Locations.Clear();
-                Locations.Add(new LocationViewModel(data));
+                foreach (var location in locations)
+                {
+                    var data = await _reader.ReadDataAsync(location);
+                    Locations.Add(new LocationViewModel(data));
+                }
                 Operation = "Ready";
             }
             catch (InvalidOperationException e)
@@ -58,29 +62,20 @@ namespace WeatherForecast
 
         public ObservableCollection<LocationViewModel> Locations { get; set; }
 
-        private void AddDummyData()
+        private void AddDefaultData()
         {
-            var location = GetDefaultLocation();
-            Locations.Add(new LocationViewModel(new WeatherData()
-            {
-                Timezone = location.Timezone,
-                Currently = new DataPoint()
-                {
-                    Temperature = 19.5F,
-                    ApparentTemperature = 17,
-                    Summary = "Clear"
-                }
-            }));
-        }
-
-        Location GetDefaultLocation()
-        {
-            return new Location()
+            Locations.Add(new LocationViewModel(new Location()
             {
                 Latitude = "50.43",
                 Longitude = "30.52",
                 Timezone = "Europe/Kiev"
-            };
+            }));
+            Locations.Add(new LocationViewModel(new Location()
+            {
+                Latitude = "40.730610",
+                Longitude = "-73.935242",
+                Timezone = "America/New_York"
+            }));
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
