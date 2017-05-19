@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 
 namespace WeatherForecast.Model
 {
+    [DebuggerDisplay("{Latitude}, {Longitude}")]
     public class Location
     {
         public string Latitude { get; set; }
