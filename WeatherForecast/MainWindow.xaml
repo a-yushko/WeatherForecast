@@ -8,13 +8,6 @@
         Title="Weather Forecast"
         Height="370"
         Width="320">
-    <Window.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources/Styles.xaml"></ResourceDictionary>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -68,6 +61,7 @@
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal">
             <Button Content="Add location"
+                    Click="AddLocation"
                     Margin="25 11 11 11" />
             <Button Content="Refresh"
                     Click="RefreshClick"

@@ -14,7 +14,7 @@ namespace WeatherForecast.Model
         public int Time { get; set; }
         public string Summary { get; set; }
         public string Icon { get; set; }
-        public int PrecipIntensity { get; set; }
+        public float PrecipIntensity { get; set; }
         public int PrecipProbability { get; set; }
         public float Temperature { get; set; }
         public float ApparentTemperature { get; set; }

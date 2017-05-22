@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 using WeatherForecast.Model;
 
 namespace WeatherForecast
@@ -53,6 +54,10 @@ namespace WeatherForecast
                     Locations.Add(new LocationViewModel(data));
                 }
                 Operation = "Ready";
+            }
+            catch (JsonException e)
+            {
+                Operation = e.Message;
             }
             catch (InvalidOperationException e)
             {
