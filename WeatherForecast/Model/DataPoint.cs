@@ -15,7 +15,7 @@ namespace WeatherForecast.Model
         public string Summary { get; set; }
         public string Icon { get; set; }
         public float PrecipIntensity { get; set; }
-        public int PrecipProbability { get; set; }
+        public float PrecipProbability { get; set; }
         public float Temperature { get; set; }
         public float ApparentTemperature { get; set; }
         public float DewPoint { get; set; }

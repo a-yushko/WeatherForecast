@@ -14,14 +14,14 @@ namespace WeatherForecast
 {
     public class MainWindowViewModel : INotifyPropertyChanged
     {
-        private IForecastReader _reader;
+        private readonly IForecastReader _reader;
         private string _operation;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(IForecastReader reader)
         {
+            _reader = reader;
             Locations = new ObservableCollection<LocationViewModel>();
             AddDefaultData();
-            InitReader();
             Refresh();
         }
 
@@ -33,12 +33,6 @@ namespace WeatherForecast
                 _operation = value;
                 OnPropertyChanged(nameof(Operation));
             }
-        }
-
-        private void InitReader()
-        {
-            var key = File.ReadAllText("key.txt");
-            _reader = new DarkSkyForecastReader(key.Trim());
         }
 
         public async void Refresh()

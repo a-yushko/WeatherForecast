@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace WeatherForecast.Model
 {
-    interface ILocationReader
+    public interface ILocationReader
     {
-        Task<Location> FindLocationAsync(string name);
+        Task<IEnumerable<Location>> FindLocationAsync(string name);
     }
 }

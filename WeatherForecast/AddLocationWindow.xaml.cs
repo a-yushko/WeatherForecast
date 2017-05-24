@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WeatherForecast.Model;
 
 namespace WeatherForecast
 {
@@ -15,6 +16,8 @@ namespace WeatherForecast
         public AddLocationWindow()
         {
             InitializeComponent();
+            var reader = ServiceFactory.GeLocationReader();
+            DataContext = new AddLocationViewModel(reader);
         }
 
         private void Add(object sender, RoutedEventArgs e)

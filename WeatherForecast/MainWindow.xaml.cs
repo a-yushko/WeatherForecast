@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WeatherForecast.Model;
 
 namespace WeatherForecast
 {
@@ -15,13 +16,10 @@ namespace WeatherForecast
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new MainWindowViewModel();
+            DataContext = new MainWindowViewModel(GetReader());
         }
 
-        protected MainWindowViewModel ViewModel
-        {
-            get { return DataContext as MainWindowViewModel; }
-        }
+        protected MainWindowViewModel ViewModel => DataContext as MainWindowViewModel;
 
         private void RefreshClick(object sender, RoutedEventArgs e)
         {
@@ -32,6 +30,20 @@ namespace WeatherForecast
         {
             var addForm = new AddLocationWindow { Owner = this };
             addForm.Show();
+        }
+
+        private IForecastReader GetReader()
+        {
+            try
+            {
+                return ServiceFactory.GetForecastReader();
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show(this, "Could not read key file");
+                Close();
+                throw;
+            }
         }
     }
 }

@@ -15,9 +15,19 @@ namespace WeatherForecast.Model
     /// </example>
     public class LocationReader : ILocationReader
     {
-        public Task<Location> FindLocationAsync(string name)
+        public Task<IEnumerable<Location>> FindLocationAsync(string name)
         {
-            throw new NotImplementedException();
+            return Task.FromResult(GetDummyData());
+        }
+
+        private IEnumerable<Location> GetDummyData()
+        {
+            return new List<Location>()
+            {
+                new Location() {Timezone = "Europe/Kiev"},
+                new Location() {Timezone = "Europe/Lviv"},
+                new Location() {Timezone = "Asia/Beijing"}
+            };
         }
     }
 }

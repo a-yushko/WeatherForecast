@@ -5,21 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherForecast"
         mc:Ignorable="d"
-        Title="Add Location" Height="100" Width="300"
+        Title="Add Location"
+        Height="100"
+        Width="300"
         WindowStartupLocation="CenterOwner">
-    <StackPanel Orientation="Horizontal"
-                Height="20"
-                Margin="11">
-        <TextBlock Text="Type to find:"/>
+    <Grid Height="20"
+          Margin="11">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Type to find:"
+                   Grid.Column="0" />
         <ComboBox IsEditable="True"
-                  Margin="11 0">
-            <ComboBox.Items>
-                <ComboBoxItem>Kyiv</ComboBoxItem>
-                <ComboBoxItem>Lviv</ComboBoxItem>
-                <ComboBoxItem>London</ComboBoxItem>
-            </ComboBox.Items>
+                  Margin="11 0"
+                  Grid.Column="1"
+                  Text="{Binding SearchString}"
+                  ItemsSource="{Binding Cities}">
         </ComboBox>
         <Button Content="Add"
-                Click="Add"/>
-    </StackPanel>
+                Click="Add"
+                Grid.Column="2" />
+    </Grid>
 </Window>
