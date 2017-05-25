@@ -3,7 +3,7 @@ using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WeatherForecast.Model
+namespace WeatherForecast.Model.DarkSky
 {
     /// <summary>
     /// Reads heater using Dark Sky API
@@ -11,25 +11,23 @@ namespace WeatherForecast.Model
     /// <remarks>
     /// See https://darksky.net/dev/docs
     /// </remarks>
-    public class DarkSkyForecastReader : IForecastReader
+    public class ForecastReader : HttpReader, IForecastReader
     {
         // API secret key
         private string _key;
-        private static HttpClient _httpClient = new HttpClient();
         private const string BaseUrl = "https://api.darksky.net/forecast/";
 
-        public DarkSkyForecastReader(string key)
+        public ForecastReader(string key)
         {
             _key = key;
-            _httpClient.BaseAddress = new Uri(BaseUrl + _key + "/");
+            Init();
         }
         public async Task<WeatherData> ReadDataAsync(Location location)
         {
             WeatherData data = null;
             // https://api.darksky.net/forecast/[key]/[latitude],[longitude]
             // ex: https://api.darksky.net/forecast/975b80d37eef043a5b2bf324dcc673ba/37.8267,-122.4233
-            var request = GetRequestString(location);
-            var response =  await _httpClient.GetAsync(request);
+            var response =  await GetAsync(location);
             if (response.IsSuccessStatusCode)
             {
                 #if DEBUG
@@ -41,8 +39,14 @@ namespace WeatherForecast.Model
             return data;
         }
 
-        private string GetRequestString(Location location)
+        public override Uri GetBaseAddress()
         {
+            return new Uri(BaseUrl + _key + "/");
+        }
+
+        public override string GetRequestString(object arg)
+        {
+            var location = (Location)arg;
             var builder = new StringBuilder();
             builder.AppendFormat("{0},{1}", location.Latitude, location.Longitude);
             // exclude unused data, set units

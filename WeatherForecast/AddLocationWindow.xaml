@@ -23,6 +23,15 @@
                   Grid.Column="1"
                   Text="{Binding SearchString}"
                   ItemsSource="{Binding Cities}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Name}"
+                                   Margin="5 0"/>
+                        <TextBlock Text="{Binding CountryName}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
         </ComboBox>
         <Button Content="Add"
                 Click="Add"

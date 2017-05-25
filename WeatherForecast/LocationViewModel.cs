@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WeatherForecast.Model;
+using WeatherForecast.Model.DarkSky;
 
 namespace WeatherForecast
 {

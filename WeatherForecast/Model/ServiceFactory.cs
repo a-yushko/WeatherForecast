@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using WeatherForecast.Model.DarkSky;
+using WeatherForecast.Model.GeoNames;
 
 namespace WeatherForecast.Model
 {
@@ -11,7 +13,7 @@ namespace WeatherForecast.Model
             try
             {
                 var key = File.ReadAllText("key.txt");
-                return new DarkSkyForecastReader(key.Trim());
+                return new ForecastReader(key.Trim());
             }
             catch (IOException e)
             {
@@ -25,7 +27,8 @@ namespace WeatherForecast.Model
 
         public static ILocationReader GeLocationReader()
         {
-            return new LocationReader();
+            var key = File.ReadAllText("user.txt");           
+            return new LocationReader(key.Trim());
         }
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-namespace WeatherForecast.Model
+namespace WeatherForecast.Model.DarkSky
 {
     public enum WeatherIcon
     {

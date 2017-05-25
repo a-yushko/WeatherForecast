@@ -10,5 +10,7 @@ namespace WeatherForecast.Model
         public string Latitude { get; set; }
         public string Longitude { get; set; }
         public string Timezone { get; set; }
+        public string Name { get; set; }
+        public string CountryName { get; set; }
     }
 }

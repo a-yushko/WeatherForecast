@@ -84,7 +84,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="IconConverter.cs" />
-    <Compile Include="Model\DarkSkyForecastReader.cs" />
+    <Compile Include="Model\DarkSky\ForecastReader.cs" />
     <Compile Include="LocationViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -101,13 +101,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainWindowViewModel.cs" />
-    <Compile Include="Model\DataPoint.cs" />
+    <Compile Include="Model\DarkSky\DataPoint.cs" />
+    <Compile Include="Model\GeoNames\Geoname.cs" />
+    <Compile Include="Model\GeoNames\GeonameInfo.cs" />
+    <Compile Include="Model\GeoNames\StatusMessage.cs" />
+    <Compile Include="Model\HttpReader.cs" />
     <Compile Include="Model\IForecastReader.cs" />
     <Compile Include="Model\Location.cs" />
     <Compile Include="Model\ILocationReader.cs" />
-    <Compile Include="Model\LocationReader.cs" />
+    <Compile Include="Model\GeoNames\LocationReader.cs" />
     <Compile Include="Model\ServiceFactory.cs" />
-    <Compile Include="Model\WeatherData.cs" />
+    <Compile Include="Model\DarkSky\WeatherData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
