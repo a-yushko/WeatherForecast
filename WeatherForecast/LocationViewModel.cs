@@ -47,6 +47,8 @@ namespace WeatherForecast
 
         public int FeelsLike => (int)_data.Currently.ApparentTemperature;
 
+        public string FeelsLikeText => $"Feels like {FeelsLike}°";
+
         public DateTime Time
         {
             get

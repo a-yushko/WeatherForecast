@@ -38,11 +38,9 @@
                             <TextBlock Text="{Binding City}"
                                        Foreground="{StaticResource AccentBrush}"
                                        FontWeight="Bold" />
-                            <TextBlock Text="{Binding Temperature}"
-                                       FontSize="28" />
-                            <TextBlock Text="{Binding FeelsLike, StringFormat=Feels like {0}}"
-                                       FontSize="14"
-                                       Foreground="{StaticResource BorderBrush}" />
+                            <TextBlock Text="{Binding Temperature, StringFormat={}{0}°}"
+                                       ToolTip="{Binding FeelsLikeText}"
+                                       FontSize="32" />
                             <TextBlock Text="{Binding Current.Summary}"
                                        FontSize="16" />
                         </StackPanel>
@@ -55,6 +53,8 @@
                 <Style TargetType="ListBoxItem">
                     <Setter Property="HorizontalContentAlignment"
                             Value="Stretch" />
+                    <Setter Property="Focusable"
+                            Value="False" />
                 </Style>
             </ListBox.ItemContainerStyle>
         </ListBox>
