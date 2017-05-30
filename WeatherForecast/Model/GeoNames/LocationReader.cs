@@ -28,6 +28,8 @@ namespace WeatherForecast.Model.GeoNames
 
         public async Task<IEnumerable<Location>> FindLocationAsync(string name)
         {
+            if (String.IsNullOrEmpty(name))
+                return Enumerable.Empty<Location>();
             var response = await GetAsync(name);
             if (response.IsSuccessStatusCode)
             {
@@ -42,7 +44,8 @@ namespace WeatherForecast.Model.GeoNames
                 var locations = data.Geonames.Select(it => new Location()
                 {
                     Name = it.Name,
-                    CountryName = it.CountryName,
+                    Country = it.CountryName,
+                    AdministrativeName = it.AdminName1,
                     Latitude = it.Lat.ToString(),
                     Longitude = it.Lng.ToString()
                 }).ToList();
@@ -60,7 +63,7 @@ namespace WeatherForecast.Model.GeoNames
         {
             var name = arg as string;
             var builder = new StringBuilder();
-            builder.AppendFormat("?name_startsWith={0}&featureClass=P&maxRows={1}&username={2}", name, MaxRows, _userName);
+            builder.AppendFormat("?name_startsWith={0}&featureClass=P&maxRows={1}&cities=cities1000&username={2}", name, MaxRows, _userName);
             return builder.ToString();
         }
 
