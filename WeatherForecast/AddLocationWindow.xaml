@@ -22,7 +22,10 @@
                   Margin="11 0"
                   Grid.Column="1"
                   Text="{Binding SearchString}"
-                  ItemsSource="{Binding Cities}">
+                  ItemsSource="{Binding Cities}"
+                  IsTextSearchEnabled="False"
+                  SelectedItem="{Binding SelectedLocation}"
+                  StaysOpenOnEdit="True">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">

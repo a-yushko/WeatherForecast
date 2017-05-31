@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WeatherForecast.Model;
+using WeatherForecast.Utility;
+using WeatherForecast.ViewModel;
 
 namespace WeatherForecast
 {
@@ -13,10 +15,13 @@ namespace WeatherForecast
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IEventAggregator _eventAggregator;
+
+        public MainWindow(IEventAggregator eventAggregator)
         {
+            _eventAggregator = eventAggregator;
             InitializeComponent();
-            DataContext = new MainWindowViewModel(GetReader());
+            DataContext = new MainWindowViewModel(GetReader(), _eventAggregator);
         }
 
         protected MainWindowViewModel ViewModel => DataContext as MainWindowViewModel;
@@ -28,7 +33,7 @@ namespace WeatherForecast
 
         private void AddLocation(object sender, RoutedEventArgs e)
         {
-            var addForm = new AddLocationWindow { Owner = this };
+            var addForm = new AddLocationWindow(_eventAggregator) { Owner = this };
             addForm.Show();
         }
 
@@ -42,7 +47,7 @@ namespace WeatherForecast
             {
                 MessageBox.Show(this, "Could not read key file");
                 Close();
-                throw;
+                return null;
             }
         }
     }

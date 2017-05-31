@@ -2,14 +2,16 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using WeatherForecast.Model;
+using WeatherForecast.Utility;
 
-namespace WeatherForecast
+namespace WeatherForecast.ViewModel
 {
     public class AddLocationViewModel
     {
-        public AddLocationViewModel(ILocationReader locationReader)
+        public AddLocationViewModel(ILocationReader locationReader, IEventAggregator eventAggregator)
         {
             _reader = locationReader;
+            _eventAggregator = eventAggregator;
             Cities = new ObservableCollection<Location>();
         }
 
@@ -20,8 +22,21 @@ namespace WeatherForecast
             get { return _searchString; }
             set
             {
-                _searchString = value; 
-                ReadCities();
+                if (String.Compare(_searchString, value, StringComparison.OrdinalIgnoreCase) != 0)
+                {
+                    _searchString = value;
+                    ReadCities();
+                }
+            }
+        }
+        public Location SelectedLocation { get; set; }
+
+        public void AddLocation()
+        {
+            if (SelectedLocation != null)
+            {
+                var location = new LocationViewModel(SelectedLocation);
+                _eventAggregator.PublishEvent(new LocationAddedEvent() {Location = location});
             }
         }
 
@@ -36,5 +51,6 @@ namespace WeatherForecast
         }
         private string _searchString;
         private readonly ILocationReader _reader;
+        private readonly IEventAggregator _eventAggregator;
     }
 }

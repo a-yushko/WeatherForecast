@@ -75,7 +75,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AddLocationViewModel.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\AddLocationViewModel.cs" />
     <Compile Include="AddLocationWindow.xaml.cs">
       <DependentUpon>AddLocationWindow.xaml</DependentUpon>
     </Compile>
@@ -83,9 +88,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Utility\EventAggregator.cs" />
+    <Compile Include="Utility\IEventAggregator.cs" />
+    <Compile Include="Utility\IHandle.cs" />
     <Compile Include="IconConverter.cs" />
     <Compile Include="Model\DarkSky\ForecastReader.cs" />
-    <Compile Include="LocationViewModel.cs" />
+    <Compile Include="ViewModel\LocationAddedEvent.cs" />
+    <Compile Include="ViewModel\LocationViewModel.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -100,7 +109,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Model\DarkSky\DataPoint.cs" />
     <Compile Include="Model\GeoNames\Geoname.cs" />
     <Compile Include="Model\GeoNames\GeonameInfo.cs" />
@@ -126,6 +135,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using WeatherForecast.Model;
 using WeatherForecast.Model.DarkSky;
 
-namespace WeatherForecast
+namespace WeatherForecast.ViewModel
 {
     public class LocationViewModel
     {
@@ -59,6 +59,6 @@ namespace WeatherForecast
             }
         }
 
-        public DataPoint Current => _data.Currently;
+        public DataPoint Current => _data?.Currently;
     }
 }

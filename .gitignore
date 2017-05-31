@@ -1,4 +1,8 @@
 key.txt
+user.txt
+tasks.txt
+geonames.json
+geonames.xml
 bin
 obj
 packages

@@ -1,28 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using WeatherForecast.Model;
+using WeatherForecast.Utility;
 
-namespace WeatherForecast
+namespace WeatherForecast.ViewModel
 {
-    public class MainWindowViewModel : INotifyPropertyChanged
+    public class MainWindowViewModel : INotifyPropertyChanged, IHandle<LocationAddedEvent>
     {
         private readonly IForecastReader _reader;
+        private readonly IEventAggregator _eventAggregator;
         private string _operation;
 
-        public MainWindowViewModel(IForecastReader reader)
+        public MainWindowViewModel(IForecastReader reader, IEventAggregator eventAggregator)
         {
             _reader = reader;
+            _eventAggregator = eventAggregator;
             Locations = new ObservableCollection<LocationViewModel>();
             AddDefaultData();
             Refresh();
+            _eventAggregator.Subscribe(this);
         }
 
         public string Operation
@@ -37,7 +37,7 @@ namespace WeatherForecast
 
         public async void Refresh()
         {
-            Operation = "Loading...";
+            Operation = Resources.Loading;
             try
             {
                 var locations = Locations.Select(it => it.Location).ToList();
@@ -45,9 +45,10 @@ namespace WeatherForecast
                 foreach (var location in locations)
                 {
                     var data = await _reader.ReadDataAsync(location);
-                    Locations.Add(new LocationViewModel(data));
+                    if (data != null)
+                        Locations.Add(new LocationViewModel(data));
                 }
-                Operation = "Ready";
+                Operation = Resources.Ready;
             }
             catch (JsonException e)
             {
@@ -83,5 +84,13 @@ namespace WeatherForecast
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #region Events
+        public void Handle(LocationAddedEvent e)
+        {
+            Locations.Add(e.Location);
+            Refresh();
+        }
+        #endregion
     }
 }
