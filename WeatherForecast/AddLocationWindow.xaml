@@ -21,7 +21,7 @@
         <ComboBox IsEditable="True"
                   Margin="11 0"
                   Grid.Column="1"
-                  Text="{Binding SearchString}"
+                  Text="{Binding SearchString, Delay=500}"
                   ItemsSource="{Binding Cities}"
                   IsTextSearchEnabled="False"
                   SelectedItem="{Binding SelectedLocation}"
@@ -30,13 +30,24 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Name, StringFormat={}{0}\, }"
-                                   Margin="5 0"/>
+                                   Margin="5 0" />
                         <TextBlock Text="{Binding AdministrativeName, StringFormat={}{0}\, }"
                                    Margin="5 0" />
-                        <TextBlock Text="{Binding Country}"/>
+                        <TextBlock Text="{Binding Country}" />
                     </StackPanel>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
+            <ComboBox.Style>
+                <Style TargetType="{x:Type ComboBox}">
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin"
+                                 Value="True">
+                            <Setter Property="IsDropDownOpen"
+                                    Value="true" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ComboBox.Style>
         </ComboBox>
         <Button Content="Add"
                 Click="Add"
