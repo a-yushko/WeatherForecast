@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Http;
 using System.Text;
@@ -46,8 +47,8 @@ namespace WeatherForecast.Model.GeoNames
                     Name = it.Name,
                     Country = it.CountryName,
                     AdministrativeName = it.AdminName1,
-                    Latitude = it.Lat.ToString(),
-                    Longitude = it.Lng.ToString()
+                    Latitude = it.Lat.ToString(CultureInfo.InvariantCulture),
+                    Longitude = it.Lng.ToString(CultureInfo.InvariantCulture)
                 }).ToList();
                 return locations;
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using WeatherForecast.Model;
 using WeatherForecast.Utility;
 using WeatherForecast.ViewModel;
@@ -15,6 +16,7 @@ namespace WeatherForecast
     /// </summary>
     public partial class AddLocationWindow : Window
     {
+        private bool SearchEnabled = true;
         public AddLocationWindow(IEventAggregator eventAggregator)
         {
             InitializeComponent();
@@ -28,6 +30,21 @@ namespace WeatherForecast
         {
             ViewModel.AddLocation();
             this.Close();
+        }
+
+        private void TextBoxTextChanged(object sender, RoutedEventArgs e)
+        {
+            var combo = sender as ComboBox;
+            if (SearchEnabled)
+                // TODO: add delay
+                ViewModel.ReadCities(combo.Text);
+            else
+                SearchEnabled = true;
+        }
+        // TODO: fix bug with Menton
+        private void SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            SearchEnabled = false;
         }
     }
 }

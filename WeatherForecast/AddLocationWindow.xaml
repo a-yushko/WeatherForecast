@@ -21,11 +21,12 @@
         <ComboBox IsEditable="True"
                   Margin="11 0"
                   Grid.Column="1"
-                  Text="{Binding SearchString, Delay=500}"
                   ItemsSource="{Binding Cities}"
                   IsTextSearchEnabled="False"
                   SelectedItem="{Binding SelectedLocation}"
-                  StaysOpenOnEdit="True">
+                  StaysOpenOnEdit="True"
+                  TextBoxBase.TextChanged="TextBoxTextChanged"
+                  SelectionChanged="SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -51,6 +52,7 @@
         </ComboBox>
         <Button Content="Add"
                 Click="Add"
-                Grid.Column="2" />
+                Grid.Column="2"
+                IsDefault="True"/>
     </Grid>
 </Window>

@@ -17,18 +17,6 @@ namespace WeatherForecast.ViewModel
 
         public ObservableCollection<Location> Cities { get; set; }
 
-        public string SearchString
-        {
-            get { return _searchString; }
-            set
-            {
-                if (String.Compare(_searchString, value, StringComparison.OrdinalIgnoreCase) != 0)
-                {
-                    _searchString = value;
-                    ReadCities();
-                }
-            }
-        }
         public Location SelectedLocation { get; set; }
 
         public void AddLocation()
@@ -40,16 +28,16 @@ namespace WeatherForecast.ViewModel
             }
         }
 
-        private async void ReadCities()
+        public async void ReadCities(string text)
         {
-            var cities = await _reader.FindLocationAsync(_searchString);
+            var cities = await _reader.FindLocationAsync(text);
             Cities.Clear();
             foreach (var city in cities)
             {
                 Cities.Add(city);
             }
         }
-        private string _searchString;
+
         private readonly ILocationReader _reader;
         private readonly IEventAggregator _eventAggregator;
     }

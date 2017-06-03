@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Weather Forecast"
         Height="370"
-        Width="340">
+        Width="343">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />

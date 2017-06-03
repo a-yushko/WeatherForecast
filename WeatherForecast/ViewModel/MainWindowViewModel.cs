@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
 using Newtonsoft.Json;
 using WeatherForecast.Model;
@@ -34,8 +35,8 @@ namespace WeatherForecast.ViewModel
                 OnPropertyChanged(nameof(Operation));
             }
         }
-
-        public async void Refresh()
+        // TODO: refresh one item only
+        public async void Refresh(LocationViewModel item = null)
         {
             Operation = Resources.Loading;
             try
@@ -46,15 +47,11 @@ namespace WeatherForecast.ViewModel
                 {
                     var data = await _reader.ReadDataAsync(location);
                     if (data != null)
-                        Locations.Add(new LocationViewModel(data));
+                        Locations.Add(new LocationViewModel(location, data));
                 }
                 Operation = Resources.Ready;
             }
-            catch (JsonException e)
-            {
-                Operation = e.Message;
-            }
-            catch (InvalidOperationException e)
+            catch (Exception e)
             {
                 Operation = e.Message;
             }
@@ -68,12 +65,14 @@ namespace WeatherForecast.ViewModel
             {
                 Latitude = "50.43",
                 Longitude = "30.52",
+                Name = "Kiev",
                 Timezone = "Europe/Kiev"
             }));
             Locations.Add(new LocationViewModel(new Location()
             {
                 Latitude = "40.730610",
                 Longitude = "-73.935242",
+                Name = "New York",
                 Timezone = "America/New_York"
             }));
         }
@@ -89,7 +88,7 @@ namespace WeatherForecast.ViewModel
         public void Handle(LocationAddedEvent e)
         {
             Locations.Add(e.Location);
-            Refresh();
+            Refresh(e.Location);
         }
         #endregion
     }
