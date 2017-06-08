@@ -31,7 +31,8 @@
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Text="{Binding Name, StringFormat={}{0}\, }"
-                                   Margin="5 0" />
+                                   Margin="5 0"
+                                   Style="{StaticResource AccentTextStyle}"/>
                         <TextBlock Text="{Binding AdministrativeName, StringFormat={}{0}\, }"
                                    Margin="5 0" />
                         <TextBlock Text="{Binding Country}" />

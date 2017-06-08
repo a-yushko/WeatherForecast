@@ -63,9 +63,10 @@ namespace WeatherForecast.ViewModel
         {
             Locations.Add(new LocationViewModel(new Location()
             {
-                Latitude = "50.43",
-                Longitude = "30.52",
+                Latitude = "50.45466",
+                Longitude = "30.5238",
                 Name = "Kiev",
+                Country = "Ukraine",
                 Timezone = "Europe/Kiev"
             }));
             Locations.Add(new LocationViewModel(new Location()
@@ -73,6 +74,7 @@ namespace WeatherForecast.ViewModel
                 Latitude = "40.730610",
                 Longitude = "-73.935242",
                 Name = "New York",
+                Country = "USA",
                 Timezone = "America/New_York"
             }));
         }
@@ -87,7 +89,8 @@ namespace WeatherForecast.ViewModel
         #region Events
         public void Handle(LocationAddedEvent e)
         {
-            Locations.Add(e.Location);
+            if (!Locations.Contains(e.Location))
+                Locations.Add(e.Location);
             Refresh(e.Location);
         }
         #endregion

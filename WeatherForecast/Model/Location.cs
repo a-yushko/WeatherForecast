@@ -17,5 +17,25 @@ namespace WeatherForecast.Model
         {
             return Name.ToString();
         }
+
+        public override bool Equals(object obj)
+        {
+            Location other = obj as Location;
+            if (other == null)
+                return base.Equals(obj);
+            return String.Equals(Latitude, other.Latitude) && String.Equals(Longitude, other.Longitude)
+                   && String.Equals(Name, other.Name) && String.Equals(Country, other.Country);
+
+        }
+
+        public override int GetHashCode()
+        {
+            int hash = 13;
+            hash = (hash * 7) + Latitude?.GetHashCode() ?? 0;
+            hash = (hash * 7) + Longitude?.GetHashCode() ?? 0;
+            hash = (hash * 7) + Name?.GetHashCode() ?? 0;
+            hash = (hash * 7) + Country?.GetHashCode() ?? 0;
+            return hash;
+        }
     }
 }

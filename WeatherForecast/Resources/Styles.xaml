@@ -8,4 +8,16 @@
         <Setter Property="Foreground"
                 Value="{StaticResource TextBrush}"/>
     </Style>
+    <Style x:Key="AccentTextStyle"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontWeight"
+                Value="Bold"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver"
+                     Value="True">
+                <Setter Property="Foreground"
+                        Value="White"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

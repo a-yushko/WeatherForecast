@@ -1,7 +1,7 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:WeatherForecast.Resources">
-    <Color x:Key="AccentColor">#00C0E0</Color>
+    <Color x:Key="AccentColor">#3998D6</Color>
     <Color x:Key="TextColor">#303030</Color>
     <Color x:Key="BorderColor">#BABABA</Color>
     <Color x:Key="BackgroundColor">#FFFFFF</Color>

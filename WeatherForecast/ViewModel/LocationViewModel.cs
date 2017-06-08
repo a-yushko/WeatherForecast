@@ -56,5 +56,17 @@ namespace WeatherForecast.ViewModel
         }
 
         public DataPoint Current => _data?.Currently;
+        public override bool Equals(object obj)
+        {
+            LocationViewModel other = obj as LocationViewModel;
+            if (other == null)
+                return base.Equals(obj);
+            return other.Location.Equals(_location);
+        }
+
+        public override int GetHashCode()
+        {
+            return 13 + _location.GetHashCode()*7 + _data.GetHashCode();
+        }
     }
 }
