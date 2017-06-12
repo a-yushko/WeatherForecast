@@ -54,6 +54,8 @@
         <Button Content="Add"
                 Click="Add"
                 Grid.Column="2"
-                IsDefault="True"/>
+                IsDefault="True"
+                Tag="&#xf00c;"
+                Style="{StaticResource CircleButton}"/>
     </Grid>
 </Window>

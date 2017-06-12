@@ -153,6 +153,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <Resource Include="Resources\FontAwesome.otf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
