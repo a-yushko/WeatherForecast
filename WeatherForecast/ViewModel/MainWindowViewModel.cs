@@ -2,9 +2,7 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Runtime.CompilerServices;
-using Newtonsoft.Json;
 using WeatherForecast.Model;
 using WeatherForecast.Utility;
 
@@ -21,7 +19,7 @@ namespace WeatherForecast.ViewModel
             _reader = reader;
             _eventAggregator = eventAggregator;
             Locations = new ObservableCollection<LocationViewModel>();
-            AddDefaultData();
+            LoadData();
             Refresh();
             _eventAggregator.Subscribe(this);
         }
@@ -58,6 +56,39 @@ namespace WeatherForecast.ViewModel
         }
 
         public ObservableCollection<LocationViewModel> Locations { get; set; }
+
+        public void OnClosed()
+        {
+            try
+            {
+                SaveData();
+            }
+            catch (Exception e)
+            {
+                Operation = e.Message;
+            }
+        }
+
+        private void SaveData()
+        {
+            var storage = new LocationStorage();
+            storage.SaveLocations(new AppSettings() { Locations = Locations.Select(it => it.Location).ToList()});
+        }
+
+        private void LoadData()
+        {
+            try
+            {
+                var storage = new LocationStorage();
+                var settings = storage.ReadLocations();
+                foreach (var location in settings.Locations)
+                    Locations.Add(new LocationViewModel(location));
+            }
+            catch (Exception e)
+            {
+                Operation = e.Message;
+            }
+        }
 
         private void AddDefaultData()
         {

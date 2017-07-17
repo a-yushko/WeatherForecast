@@ -50,5 +50,10 @@ namespace WeatherForecast
                 return null;
             }
         }
+
+        private void OnWindowClosed(object sender, EventArgs e)
+        {
+            ViewModel.OnClosed();
+        }
     }
 }

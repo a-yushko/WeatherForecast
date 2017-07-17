@@ -21,22 +21,22 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <StackPanel Orientation="Horizontal">
                         <Grid>
-                        <Ellipse Width="20"
-                                 Height="20"
-                                 Stroke="{TemplateBinding Background}"
-                                 StrokeThickness="2"
-                                 Fill="Transparent"
-                                 Focusable="True"/>
-                            <TextBlock Text="{TemplateBinding Tag}" 
+                            <Ellipse Width="20"
+                                     Height="20"
+                                     Stroke="{TemplateBinding Background}"
+                                     StrokeThickness="2"
+                                     Fill="Transparent"
+                                     Focusable="True" />
+                            <TextBlock Text="{TemplateBinding Tag}"
                                        Style="{StaticResource FontAwesome}"
                                        HorizontalAlignment="Center"
                                        VerticalAlignment="Center"
                                        Foreground="{TemplateBinding Background}"
-                                       FontSize="10"/>
+                                       FontSize="10" />
                         </Grid>
-                        <ContentPresenter TextBlock.Foreground="{TemplateBinding Background}" 
+                        <ContentPresenter TextBlock.Foreground="{TemplateBinding Background}"
                                           VerticalAlignment="Center"
-                                          Margin="5 0 0 0"/>
+                                          Margin="5 0 0 0" />
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
@@ -60,5 +60,10 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    <Style x:Key="AccentTextStyle"
+           TargetType="{x:Type TextBlock}">
+        <Setter Property="FontWeight"
+                Value="Bold" />
     </Style>
 </ResourceDictionary>

@@ -5,6 +5,7 @@ using System.Diagnostics;
 namespace WeatherForecast.Model
 {
     [DebuggerDisplay("{Latitude}, {Longitude}")]
+    [Serializable]
     public class Location
     {
         public string Latitude { get; set; }
