@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherForecast"
         mc:Ignorable="d"
-        Title="Weather Forecast"
+        Title="{x:Static local:Resources.AppTitle}"
         Height="370"
         Width="343"
         Closed="OnWindowClosed">
@@ -15,7 +15,7 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Text="Local Weather"
+        <TextBlock Text="{x:Static local:Resources.MainTitle}"
                    Grid.Row="0"
                    Margin="25 0"
                    FontSize="18"
@@ -61,7 +61,7 @@
         </ListBox>
         <StackPanel Grid.Row="2"
                     Orientation="Horizontal">
-            <Button Content="Add location"
+            <Button Content="{x:Static local:Resources.AddLocation}"
                     Click="AddLocation"
                     Margin="25 11 11 11"
                     Style="{StaticResource CircleButton}"
@@ -70,7 +70,7 @@
                     Click="RefreshClick"
                     Margin="0 11"
                     Style="{StaticResource ImageButton}"
-                    ToolTip="Refresh"
+                    ToolTip="{x:Static local:Resources.Refresh}"
                     FontSize="16"/>
             <TextBlock Text="{Binding Operation}"
                        TextTrimming="CharacterEllipsis"

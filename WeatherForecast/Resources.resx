@@ -117,10 +117,40 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="AddLocation" xml:space="preserve">
+    <value>Add location</value>
+  </data>
+  <data name="AddLocationTitle" xml:space="preserve">
+    <value>Add Location</value>
+  </data>
+  <data name="AppTitle" xml:space="preserve">
+    <value>Weather Forecast</value>
+  </data>
+  <data name="ErrorNoKey" xml:space="preserve">
+    <value>Could not read the key file.</value>
+  </data>
+  <data name="ErrorNoPermission" xml:space="preserve">
+    <value>Do not have the required permission to access key file.</value>
+  </data>
+  <data name="FeelsLikePattern" xml:space="preserve">
+    <value>Feels like {0}°</value>
+  </data>
   <data name="Loading" xml:space="preserve">
     <value>Loading...</value>
   </data>
+  <data name="MainTitle" xml:space="preserve">
+    <value>Local Weather</value>
+  </data>
   <data name="Ready" xml:space="preserve">
     <value>Ready</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="TypeToFind" xml:space="preserve">
+    <value>Type to find:</value>
   </data>
 </root>

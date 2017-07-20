@@ -17,11 +17,11 @@ namespace WeatherForecast.Model
             }
             catch (IOException e)
             {
-                throw new InvalidOperationException("Could not read the key file", e);
+                throw new InvalidOperationException(Resources.ErrorNoKey, e);
             }
             catch (UnauthorizedAccessException e)
             {
-                throw new InvalidOperationException("Do not have the required permission to access key file", e);
+                throw new InvalidOperationException(Resources.ErrorNoPermission, e);
             }
         }
 

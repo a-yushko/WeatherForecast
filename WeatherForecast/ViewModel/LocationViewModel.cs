@@ -13,7 +13,6 @@ namespace WeatherForecast.ViewModel
         private WeatherData _data;
         private Location _location;
 
-
         public LocationViewModel(Location location)
             :this(location, null)
         {
@@ -43,7 +42,7 @@ namespace WeatherForecast.ViewModel
 
         public int FeelsLike => (int)_data.Currently.ApparentTemperature;
 
-        public string FeelsLikeText => $"Feels like {FeelsLike}°";
+        public string FeelsLikeText => String.Format(Resources.FeelsLikePattern, FeelsLike);
 
         public DateTime Time
         {

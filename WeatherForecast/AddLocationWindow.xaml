@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherForecast"
         mc:Ignorable="d"
-        Title="Add Location"
+        Title="{x:Static local:Resources.AddLocationTitle}"
         Height="100"
         Width="300"
         WindowStartupLocation="CenterOwner">
@@ -16,7 +16,7 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Type to find:"
+        <TextBlock Text="{x:Static local:Resources.TypeToFind}"
                    Grid.Column="0" />
         <ComboBox IsEditable="True"
                   Margin="11 0"
@@ -51,7 +51,7 @@
                 </Style>
             </ComboBox.Style>
         </ComboBox>
-        <Button Content="Add"
+        <Button Content="{x:Static local:Resources.Add}"
                 Click="Add"
                 Grid.Column="2"
                 IsDefault="True"
