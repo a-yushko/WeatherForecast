@@ -65,6 +65,7 @@ namespace WeatherForecast.Model.GeoNames
             var name = arg as string;
             var builder = new StringBuilder();
             builder.AppendFormat("?name_startsWith={0}&featureClass=P&maxRows={1}&cities=cities1000&username={2}", name, MaxRows, _userName);
+            builder.AppendFormat("&lang={0}", System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
             return builder.ToString();
         }
 

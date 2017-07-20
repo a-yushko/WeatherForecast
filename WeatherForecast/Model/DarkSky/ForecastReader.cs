@@ -51,6 +51,7 @@ namespace WeatherForecast.Model.DarkSky
             builder.AppendFormat("{0},{1}", location.Latitude, location.Longitude);
             // exclude unused data, set units
             builder.Append("?exclude=minutely,hourly,daily,alerts,flags&units=si");
+            builder.AppendFormat("&lang={0}", System.Globalization.CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
             return builder.ToString();
         }
     }

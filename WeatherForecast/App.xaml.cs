@@ -17,6 +17,8 @@ namespace WeatherForecast
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
+            // apply current locale
+            System.Threading.Thread.CurrentThread.CurrentUICulture = System.Globalization.CultureInfo.CurrentCulture;
             _eventAggregator = new EventAggregator();
             var main = new MainWindow(_eventAggregator);
             MainWindow.Show();
