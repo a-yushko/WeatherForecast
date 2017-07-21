@@ -129,11 +129,17 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Прогноз погоди</value>
   </data>
+  <data name="ErrorInvalidKey" xml:space="preserve">
+    <value>Неправильний ключ.</value>
+  </data>
   <data name="ErrorNoKey" xml:space="preserve">
     <value>Неможливо прочитати файл ключів.</value>
   </data>
   <data name="ErrorNoPermission" xml:space="preserve">
     <value>Немає дозволу на читання файлу ключів.</value>
+  </data>
+  <data name="ErrorReadingForecast" xml:space="preserve">
+    <value>Неможливо завантажити прогноз погоди: {0}</value>
   </data>
   <data name="FeelsLikePattern" xml:space="preserve">
     <value>Відчувається як {0}°</value>

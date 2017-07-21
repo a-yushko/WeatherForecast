@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using WeatherForecast.Model;
 using WeatherForecast.Utility;
@@ -16,10 +12,12 @@ namespace WeatherForecast
     public partial class MainWindow : Window
     {
         private readonly IEventAggregator _eventAggregator;
+        private readonly ILocationReader _locationReader;
 
         public MainWindow(IEventAggregator eventAggregator)
         {
             _eventAggregator = eventAggregator;
+            _locationReader = ServiceFactory.GeLocationReader();
             InitializeComponent();
             DataContext = new MainWindowViewModel(GetReader(), _eventAggregator);
         }
@@ -33,7 +31,7 @@ namespace WeatherForecast
 
         private void AddLocation(object sender, RoutedEventArgs e)
         {
-            var addForm = new AddLocationWindow(_eventAggregator) { Owner = this };
+            var addForm = new AddLocationWindow(_locationReader, _eventAggregator) { Owner = this };
             addForm.Show();
         }
 

@@ -17,10 +17,9 @@ namespace WeatherForecast
     public partial class AddLocationWindow : Window
     {
         private bool SearchEnabled = true;
-        public AddLocationWindow(IEventAggregator eventAggregator)
+        public AddLocationWindow(ILocationReader reader, IEventAggregator eventAggregator)
         {
             InitializeComponent();
-            var reader = ServiceFactory.GeLocationReader();
             DataContext = new AddLocationViewModel(reader, eventAggregator);
         }
 

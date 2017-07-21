@@ -27,14 +27,13 @@ namespace WeatherForecast.Model.DarkSky
             WeatherData data = null;
             // https://api.darksky.net/forecast/[key]/[latitude],[longitude]
             // ex: https://api.darksky.net/forecast/975b80d37eef043a5b2bf324dcc673ba/37.8267,-122.4233
-            var response =  await GetAsync(location);
-            if (response.IsSuccessStatusCode)
-            {
-                #if DEBUG
-                string json = await response.Content.ReadAsStringAsync();
-                #endif
-                data = await response.Content.ReadAsAsync<WeatherData>();
-            }
+            var response = await GetAsync(location);
+            if (!response.IsSuccessStatusCode)
+                throw new InvalidOperationException(String.Format(Resources.ErrorReadingForecast, response.ReasonPhrase));
+            #if DEBUG
+            string json = await response.Content.ReadAsStringAsync();
+            #endif
+            data = await response.Content.ReadAsAsync<WeatherData>();
 
             return data;
         }

@@ -97,6 +97,15 @@ namespace WeatherForecast {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No valid key found..
+        /// </summary>
+        public static string ErrorInvalidKey {
+            get {
+                return ResourceManager.GetString("ErrorInvalidKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Could not read the key file..
         /// </summary>
         public static string ErrorNoKey {
@@ -111,6 +120,15 @@ namespace WeatherForecast {
         public static string ErrorNoPermission {
             get {
                 return ResourceManager.GetString("ErrorNoPermission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not read weather forecast: {0}.
+        /// </summary>
+        public static string ErrorReadingForecast {
+            get {
+                return ResourceManager.GetString("ErrorReadingForecast", resourceCulture);
             }
         }
         

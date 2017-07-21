@@ -129,11 +129,17 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Météo</value>
   </data>
+  <data name="ErrorInvalidKey" xml:space="preserve">
+    <value>Clé invalide.</value>
+  </data>
   <data name="ErrorNoKey" xml:space="preserve">
     <value>Could not read the key file.</value>
   </data>
   <data name="ErrorNoPermission" xml:space="preserve">
     <value>Do not have the required permission to access key file.</value>
+  </data>
+  <data name="ErrorReadingForecast" xml:space="preserve">
+    <value>Impossible d'obtenir prévisions météo: {0}</value>
   </data>
   <data name="FeelsLikePattern" xml:space="preserve">
     <value>t. ressentie {0}°</value>

@@ -22,7 +22,7 @@ namespace WeatherForecast.Model
         public void SaveLocations(AppSettings settings)
         {
             XmlSerializer formatter = new XmlSerializer(typeof(AppSettings));
-            using (FileStream fs = new FileStream(SettingsFilename, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(SettingsFilename, FileMode.OpenOrCreate | FileMode.Truncate))
             {
                 formatter.Serialize(fs, settings);
             }

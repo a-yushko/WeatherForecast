@@ -129,11 +129,17 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Weather Forecast</value>
   </data>
+  <data name="ErrorInvalidKey" xml:space="preserve">
+    <value>No valid key found.</value>
+  </data>
   <data name="ErrorNoKey" xml:space="preserve">
     <value>Could not read the key file.</value>
   </data>
   <data name="ErrorNoPermission" xml:space="preserve">
     <value>Do not have the required permission to access key file.</value>
+  </data>
+  <data name="ErrorReadingForecast" xml:space="preserve">
+    <value>Could not read weather forecast: {0}</value>
   </data>
   <data name="FeelsLikePattern" xml:space="preserve">
     <value>Feels like {0}°</value>

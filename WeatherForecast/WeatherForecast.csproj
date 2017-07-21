@@ -81,6 +81,8 @@
     <Compile Include="FilterComboBox.cs" />
     <Compile Include="Model\AppSettings.cs" />
     <Compile Include="Model\ILocationStorage.cs" />
+    <Compile Include="Model\KeyEncoder.cs" />
+    <Compile Include="Model\KeyReader.cs" />
     <Compile Include="Model\LocationStorage.cs" />
     <Compile Include="Resources.fr.Designer.cs">
       <DependentUpon>Resources.fr.resx</DependentUpon>
