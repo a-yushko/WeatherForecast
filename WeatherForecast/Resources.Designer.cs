@@ -97,6 +97,15 @@ namespace WeatherForecast {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to {0} is still running..
+        /// </summary>
+        public static string BaloonTextPattern {
+            get {
+                return ResourceManager.GetString("BaloonTextPattern", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No valid key found..
         /// </summary>
         public static string ErrorInvalidKey {
@@ -183,6 +192,16 @@ namespace WeatherForecast {
         public static string TypeToFind {
             get {
                 return ResourceManager.GetString("TypeToFind", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        public static System.Drawing.Icon weather16 {
+            get {
+                object obj = ResourceManager.GetObject("weather16", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }

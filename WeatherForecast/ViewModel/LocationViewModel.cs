@@ -55,6 +55,9 @@ namespace WeatherForecast.ViewModel
         }
 
         public DataPoint Current => _data?.Currently;
+
+        public string BriefText => $"{City} - {Current.Summary}, {Temperature}°";
+
         public override bool Equals(object obj)
         {
             LocationViewModel other = obj as LocationViewModel;

@@ -129,6 +129,9 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Прогноз погоди</value>
   </data>
+  <data name="BaloonTextPattern" xml:space="preserve">
+    <value>{0} доступний тут.</value>
+  </data>
   <data name="ErrorInvalidKey" xml:space="preserve">
     <value>Неправильний ключ.</value>
   </data>

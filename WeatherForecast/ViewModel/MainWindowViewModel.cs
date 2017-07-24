@@ -48,6 +48,9 @@ namespace WeatherForecast.ViewModel
                         Locations.Add(new LocationViewModel(location, data));
                 }
                 Operation = Resources.Ready;
+                var first = Locations.FirstOrDefault();
+                if (first != null)
+                    _eventAggregator.PublishEvent(new UpdateTrayIconTextEvent() {Text = first.BriefText});
             }
             catch (Exception e)
             {

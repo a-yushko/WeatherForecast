@@ -129,6 +129,9 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Weather Forecast</value>
   </data>
+  <data name="BaloonTextPattern" xml:space="preserve">
+    <value>{0} is still running.</value>
+  </data>
   <data name="ErrorInvalidKey" xml:space="preserve">
     <value>No valid key found.</value>
   </data>
@@ -158,5 +161,9 @@
   </data>
   <data name="TypeToFind" xml:space="preserve">
     <value>Type to find:</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="weather16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\weather16.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

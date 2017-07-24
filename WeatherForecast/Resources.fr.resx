@@ -129,6 +129,9 @@
   <data name="AppTitle" xml:space="preserve">
     <value>Météo</value>
   </data>
+  <data name="BaloonTextPattern" xml:space="preserve">
+    <value>{0} est disponible ici.</value>
+  </data>
   <data name="ErrorInvalidKey" xml:space="preserve">
     <value>Clé invalide.</value>
   </data>
