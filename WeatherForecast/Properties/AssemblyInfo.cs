@@ -10,9 +10,9 @@ using System.Windows;
 [assembly: AssemblyTitle("WeatherForecast")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Serena Software, Inc.")]
+[assembly: AssemblyCompany("Aleksey Yushko")]
 [assembly: AssemblyProduct("WeatherForecast")]
-[assembly: AssemblyCopyright("Copyright © Serena Software, Inc. 2017")]
+[assembly: AssemblyCopyright("Copyright © Aleksey Yushko. 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

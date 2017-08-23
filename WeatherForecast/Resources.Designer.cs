@@ -97,7 +97,7 @@ namespace WeatherForecast {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to {0} is still running..
+        ///   Looks up a localized string similar to {0} is running in the background..
         /// </summary>
         public static string BaloonTextPattern {
             get {

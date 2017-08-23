@@ -130,7 +130,7 @@
     <value>Weather Forecast</value>
   </data>
   <data name="BaloonTextPattern" xml:space="preserve">
-    <value>{0} is still running.</value>
+    <value>{0} is running in the background.</value>
   </data>
   <data name="ErrorInvalidKey" xml:space="preserve">
     <value>No valid key found.</value>
